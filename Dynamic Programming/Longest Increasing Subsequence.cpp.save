@@ -1,0 +1,39 @@
+/* 
+    Dynamic Programming implementation of LIS problem 
+    A straight-forward solution in O(n^2) time
+*/
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+#define ll long long
+#define ld long double
+#define ull unsigned long long
+#define pb push_back
+
+int main() {
+
+	int i;
+	vector<int> m, n;
+	while(cin>>i)
+	{
+		m.pb(i);
+	}
+
+	for(int i=0; i<m.size(); i++)
+	{
+		int maxe =0;
+		for(int j=0; j<i; j++)
+		{
+			if(m[i]>=m[j])
+			{
+				maxe = max(maxe, n[j]);
+			}
+		}
+		n.pb(1+maxe);
+	}
+
+	cout<<*max_element(n.begin(), n.end());
+	return 0;
+}
